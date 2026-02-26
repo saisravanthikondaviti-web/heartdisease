@@ -288,3 +288,23 @@ button:hover {
   transform: translateY(-2px);
   box-shadow: 0 10px 25px rgba(0, 198, 255, 0.5);
 }
+
+
+/* ===== SIGNUP LINK STYLE ===== */
+
+.auth-container p {
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+.auth-container a {
+  color: #00e0ff;              /* Bright cyan */
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+.auth-container a:hover {
+  color: #ffffff;
+  text-shadow: 0 0 10px #00e0ff;
+}
