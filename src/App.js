@@ -1,12 +1,18 @@
 import React from "react";
-import PredictionForm from "./components/PredictionForm";
-import "./App.css";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Login from "./components/Login";
+import Signup from "./components/Signup";
+import Dashboard from "./pages/Dashboard";
 
 function App() {
   return (
-    <div className="app-container">
-      <PredictionForm />
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+      </Routes>
+    </Router>
   );
 }
 
