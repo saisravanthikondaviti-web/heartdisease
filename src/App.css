@@ -1,79 +1,165 @@
+/* ================= GLOBAL ================= */
+
 body {
   margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  font-family: 'Poppins', 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #0f2027, #1c2e3a, #243b55);
   color: white;
+  overflow-x: hidden;
 }
+
+/* Smooth fade animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ================= NAVBAR ================= */
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 40px;
+  right: 40px;
+  margin-top: 20px;
+  padding: 15px 30px;
+  border-radius: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(15px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  animation: fadeInUp 0.6s ease;
+}
+
+.navbar button {
+  padding: 8px 18px;
+  border-radius: 25px;
+  border: none;
+  background: linear-gradient(90deg, #ff4d4d, #ff0000);
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.navbar button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(255, 0, 0, 0.7);
+}
+
+/* ================= MAIN CONTAINER ================= */
 
 .app-container {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  padding-top: 120px;
 }
 
+/* ================= CARD ================= */
+
 .card {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(20px);
-  padding: 30px;
-  border-radius: 20px;
-  width: 500px;
-  box-shadow: 0 0 40px rgba(0,0,0,0.5);
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(25px);
+  padding: 40px;
+  border-radius: 25px;
+  width: 520px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  animation: fadeInUp 0.8s ease;
+  transition: 0.3s ease;
 }
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+/* ================= TITLE ================= */
 
 .title {
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: 1px;
 }
+
+/* ================= FORM ================= */
 
 .form-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 10px;
+  gap: 15px;
 }
 
 input {
-  padding: 10px;
-  border-radius: 8px;
+  padding: 12px;
+  border-radius: 10px;
   border: none;
   outline: none;
+  font-size: 14px;
+  transition: 0.3s ease;
+  background: rgba(255, 255, 255, 0.9);
+  color: #222;
 }
+
+input:focus {
+  box-shadow: 0 0 12px #00c6ff;
+  transform: scale(1.03);
+}
+
+/* ================= BUTTON ================= */
 
 button {
   grid-column: span 2;
-  padding: 12px;
-  background: #00c6ff;
+  padding: 14px;
+  margin-top: 10px;
+  border-radius: 12px;
   border: none;
-  border-radius: 10px;
+  background: linear-gradient(90deg, #00c6ff, #0072ff);
   color: white;
-  font-weight: bold;
+  font-weight: 600;
+  letter-spacing: 0.5px;
   cursor: pointer;
-  transition: 0.3s;
+  transition: 0.3s ease;
 }
 
 button:hover {
-  background: #0072ff;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(0, 198, 255, 0.6);
 }
 
+/* ================= RESULT CARD ================= */
+
 .result-card {
-  margin-top: 20px;
-  padding: 20px;
-  border-radius: 15px;
+  margin-top: 25px;
+  padding: 25px;
+  border-radius: 20px;
   text-align: center;
-  transition: 0.3s;
+  transition: 0.3s ease;
+  animation: fadeInUp 0.5s ease;
 }
 
 .high {
   background: rgba(255, 0, 0, 0.15);
-  box-shadow: 0 0 25px red;
+  box-shadow: 0 0 30px rgba(255, 0, 0, 0.7);
 }
 
 .low {
-  background: rgba(0, 255, 0, 0.15);
-  box-shadow: 0 0 25px lime;
+  background: rgba(0, 255, 120, 0.15);
+  box-shadow: 0 0 30px rgba(0, 255, 120, 0.7);
 }
 
-/* HEART SHAPE */
+/* ================= HEART ANIMATION ================= */
+
 .heart {
   width: 60px;
   height: 60px;
@@ -115,66 +201,51 @@ button:hover {
 
 @keyframes beat {
   0% { transform: scale(1) rotate(-45deg); }
-  50% { transform: scale(1.2) rotate(-45deg); }
+  50% { transform: scale(1.15) rotate(-45deg); }
   100% { transform: scale(1) rotate(-45deg); }
 }
 
-/* MODAL OVERLAY */
+/* ================= MODAL ================= */
+
 .modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.7);
-  backdrop-filter: blur(6px);
+  background: rgba(0,0,0,0.75);
+  backdrop-filter: blur(8px);
   display: flex;
   justify-content: center;
   align-items: center;
-  animation: fadeIn 0.3s ease-in-out;
   z-index: 1000;
 }
 
-/* MODAL CARD */
 .modal {
   background: rgba(20, 20, 20, 0.95);
-  padding: 30px;
-  border-radius: 20px;
-  width: 500px;
+  padding: 35px;
+  border-radius: 25px;
+  width: 520px;
   position: relative;
-  animation: popUp 0.3s ease-in-out;
+  animation: fadeInUp 0.4s ease;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.6);
 }
 
-/* CLOSE BUTTON */
 .close-btn {
   position: absolute;
   top: 15px;
   right: 20px;
-  font-size: 24px;
+  font-size: 22px;
   cursor: pointer;
   color: white;
+  transition: 0.3s;
 }
 
 .close-btn:hover {
   color: red;
 }
 
-/* ANIMATIONS */
-@keyframes popUp {
-  0% {
-    transform: scale(0.7);
-    opacity: 0;
-  }
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
+/* ================= AUTH PAGES ================= */
 
 .auth-container {
   min-height: 100vh;
@@ -183,59 +254,37 @@ button:hover {
   justify-content: center;
   align-items: center;
   background: linear-gradient(135deg, #141e30, #243b55);
-  color: white;
+  animation: fadeInUp 0.6s ease;
+}
+
+.auth-container h2 {
+  margin-bottom: 20px;
 }
 
 .auth-container form {
   display: flex;
   flex-direction: column;
-  width: 300px;
-  gap: 10px;
+  width: 320px;
+  gap: 15px;
 }
 
 .auth-container input {
-  padding: 10px;
-  border-radius: 8px;
+  padding: 12px;
+  border-radius: 10px;
   border: none;
 }
 
 .auth-container button {
-  padding: 10px;
-  border-radius: 8px;
+  padding: 12px;
+  border-radius: 12px;
   border: none;
-  background: #00c6ff;
-  color: white;
+  background: linear-gradient(90deg, #00c6ff, #0072ff);
+  font-weight: 600;
   cursor: pointer;
+  transition: 0.3s;
 }
 
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  padding: 15px 30px;
-  background: rgba(0,0,0,0.6);
-  color: white;
-}
-
-.navbar {
-  position: absolute;
-  top: 20px;
-  left: 40px;
-  right: 40px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  color: white;
-}
-
-.navbar button {
-  padding: 8px 15px;
-  border-radius: 8px;
-  border: none;
-  background: #ff4d4d;
-  color: white;
-  cursor: pointer;
-}
-
-.navbar button:hover {
-  background: #cc0000;
+.auth-container button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 198, 255, 0.5);
 }
