@@ -5,12 +5,15 @@ function ResultCard({ result, name }) {
 
   return (
     <div className={`result-card ${isHighRisk ? "high" : "low"}`}>
-      <h2>Patient: {name}</h2>
+      
+      <div className={`heart ${isHighRisk ? "danger" : "safe"}`}></div>
+
+      <h2>{name}</h2>
       <p><strong>Prediction:</strong> {result.prediction}</p>
       <p><strong>Risk Level:</strong> {result.risk_level}</p>
       <p><strong>Disease Type:</strong> {result.disease_type}</p>
 
-      <h3>Precautions:</h3>
+      <h3>Precautions</h3>
       <ul>
         {result.precautions.map((item, index) => (
           <li key={index}>{item}</li>

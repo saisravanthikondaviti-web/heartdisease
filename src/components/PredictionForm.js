@@ -16,6 +16,7 @@ function PredictionForm() {
   });
 
   const [result, setResult] = useState(null);
+  const [showModal, setShowModal] = useState(false);
 
   const handleChange = (e) => {
     setFormData({
@@ -44,26 +45,37 @@ function PredictionForm() {
 
     const data = await response.json();
     setResult(data);
+    setShowModal(true);
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit} className="form">
+    <>
+      <div className="card">
+        <h1 className="title">🫀 Heart Risk Analyzer</h1>
 
-        <input name="name" placeholder="Patient Name" onChange={handleChange} required />
-        <input name="age" placeholder="Age" onChange={handleChange} required />
-        <input name="sex" placeholder="Sex (0=Female,1=Male)" onChange={handleChange} required />
-        <input name="cp" placeholder="Chest Pain Type (0-3)" onChange={handleChange} required />
-        <input name="trestbps" placeholder="Resting BP" onChange={handleChange} required />
-        <input name="chol" placeholder="Cholesterol" onChange={handleChange} required />
-        <input name="thalach" placeholder="Max Heart Rate" onChange={handleChange} required />
-        <input name="exang" placeholder="Exercise Angina (0/1)" onChange={handleChange} required />
+        <form onSubmit={handleSubmit} className="form-grid">
+          <input name="name" placeholder="Patient Name" onChange={handleChange} required />
+          <input name="age" placeholder="Age" onChange={handleChange} required />
+          <input name="sex" placeholder="Sex (0/1)" onChange={handleChange} required />
+          <input name="cp" placeholder="Chest Pain Type" onChange={handleChange} required />
+          <input name="trestbps" placeholder="Blood Pressure" onChange={handleChange} required />
+          <input name="chol" placeholder="Cholesterol" onChange={handleChange} required />
+          <input name="thalach" placeholder="Max Heart Rate" onChange={handleChange} required />
+          <input name="exang" placeholder="Exercise Angina (0/1)" onChange={handleChange} required />
 
-        <button type="submit">Predict</button>
-      </form>
+          <button type="submit">Predict</button>
+        </form>
+      </div>
 
-      {result && <ResultCard result={result} name={formData.name} />}
-    </div>
+      {showModal && (
+        <div className="modal-overlay">
+          <div className="modal">
+            <span className="close-btn" onClick={() => setShowModal(false)}>×</span>
+            <ResultCard result={result} name={formData.name} />
+          </div>
+        </div>
+      )}
+    </>
   );
 }
 
